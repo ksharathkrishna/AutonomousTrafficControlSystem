@@ -5,7 +5,6 @@ import random
 
 
 import time
-#from 4ps import distance
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
@@ -51,7 +50,7 @@ def tscloud(n,e,s,w):
 
 
 
-
+#algorithm
 def distance(TRIG,ECHO):
      print ("Distance Measurement In Progress\n")
 
@@ -60,8 +59,6 @@ def distance(TRIG,ECHO):
      GPIO.setup(TRIG,GPIO.OUT)
 
      GPIO.setup(ECHO,GPIO.IN)
-
-    #Then, ensure that the Trigger pin is set low, and give the sensor a second to settle.
 
      GPIO.output(TRIG, False)
 
@@ -94,8 +91,6 @@ def distance(TRIG,ECHO):
      distance = round(distance, 2)
      time.sleep(2)
      if distance<30 :
-        #time.sleep(2)
-        
          return 1
 
      return 0
@@ -136,27 +131,10 @@ def detect(mv):
 
 
 def gled(mv,f):
-    pno=[25,1,20,22]
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setwarnings(False)
-    #active low
-    print("inside led")
-    
-    
-    if mv == 10 :
-
-        GPIO.setup(pno[mv],GPIO.OUT)
-        print ("LED on"+str(mv))
-        GPIO.output(pno[mv],False)
-        time.sleep(5)
-
-        detect(mv)
-        print ("LED off")
-        GPIO.output(pno[mv],True)
-        time.sleep(2)
-        
-    #active high
-    else:
+        pno=[25,1,20,22]
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setwarnings(False)
+        print("inside led")
         GPIO.setup(pno[mv],GPIO.OUT)
         print ("LED on"+str(mv))
         GPIO.output(pno[mv],GPIO.HIGH)
@@ -167,11 +145,9 @@ def gled(mv,f):
         print ("LED off")
         GPIO.output(pno[mv],GPIO.LOW)
         time.sleep(2)
-    #f[mv]=0
-    #tscloud(f[0],f[1],f[2],f[3])
-
+   
     
-    return
+         return
 
 
 if __name__ == '__main__':
@@ -188,9 +164,6 @@ if __name__ == '__main__':
             
             
             
-            
- 
-        # Reset by pressing CTRL + C
     except KeyboardInterrupt:
         print("Measurement stopped by User")
     GPIO.cleanup()
