@@ -104,8 +104,6 @@ def detect(mv):
     if(n==1):
         if(mv!=0):
             f[0]+=1
-            #put cloud  here
-
     if(e==1):
         if(mv!=1):
             f[1]+=1
